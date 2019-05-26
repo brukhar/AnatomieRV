@@ -18,12 +18,6 @@ public class ResetPiece : MonoBehaviour
         parent = transform.parent;
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     public void CheckResetPos()
     {
         if ((transform.position - (resetSphere.center + resetSphere.transform.position)).sqrMagnitude < resetSphere.radius * resetSphere.radius)
@@ -32,7 +26,7 @@ public class ResetPiece : MonoBehaviour
         }
     }
 
-    void ResetPos()
+    public void ResetPos()
     {
         transform.SetParent(parent);
         transform.localPosition = posOrigin;
