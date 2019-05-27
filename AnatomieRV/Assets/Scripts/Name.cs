@@ -6,6 +6,7 @@
 
 using UnityEngine;
 using System.Collections;
+using UnityEngine.UI;
 
 namespace Valve.VR.InteractionSystem.Sample
 {
@@ -14,6 +15,13 @@ namespace Valve.VR.InteractionSystem.Sample
     public class Name : MonoBehaviour
     {
         public string Nom;
+        public string Function;
+
+        public Text RightName;
+        public Text RightFunction;
+        public Text LeftName;
+        public Text LeftFunction;
+
         private TextMesh generalText;
         private TextMesh hoveringText;
         private Vector3 oldPosition;
@@ -99,6 +107,20 @@ namespace Valve.VR.InteractionSystem.Sample
         private void OnAttachedToHand(Hand hand)
         {
             generalText.text = Nom;
+            if(hand.handType == SteamVR_Input_Sources.RightHand)
+            {
+                if (RightName)
+                    RightName.text = Nom;
+                if (RightFunction)
+                    RightFunction.text = Function;
+            }
+            else if(hand.handType == SteamVR_Input_Sources.LeftHand)
+            {
+                if (LeftName)
+                    LeftName.text = Nom;
+                if (LeftFunction)
+                    LeftFunction.text = Function;
+            }
         }
 
 
@@ -109,6 +131,20 @@ namespace Valve.VR.InteractionSystem.Sample
         private void OnDetachedFromHand(Hand hand)
         {
             generalText.text = string.Format("");
+            if (hand.handType == SteamVR_Input_Sources.RightHand)
+            {
+                if (RightName)
+                    RightName.text = string.Format("");
+                if (RightFunction)
+                    RightFunction.text = string.Format("");
+            }
+            else if (hand.handType == SteamVR_Input_Sources.LeftHand)
+            {
+                if (LeftName)
+                    LeftName.text = string.Format("");
+                if (LeftFunction)
+                    LeftFunction.text = string.Format("");
+            }
         }
 
 
