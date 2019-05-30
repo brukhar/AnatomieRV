@@ -106,21 +106,27 @@ namespace Valve.VR.InteractionSystem.Sample
         //-------------------------------------------------
         private void OnAttachedToHand(Hand hand)
         {
-            generalText.text = Nom;
-            if(hand.handType == SteamVR_Input_Sources.RightHand)
+
+            if(transform.parent != GameObject.Find("Muscles"))
             {
-                if (RightName)
-                    RightName.text = Nom;
-                if (RightFunction)
-                    RightFunction.text = Function;
+                Debug.Log("j ai un parent");
+                generalText.text = Nom;
+                if (hand.handType == SteamVR_Input_Sources.RightHand)
+                {
+                    if (RightName)
+                        RightName.text = Nom;
+                    if (RightFunction)
+                        RightFunction.text = Function;
+                }
+                else if (hand.handType == SteamVR_Input_Sources.LeftHand)
+                {
+                    if (LeftName)
+                        LeftName.text = Nom;
+                    if (LeftFunction)
+                        LeftFunction.text = Function;
+                }
             }
-            else if(hand.handType == SteamVR_Input_Sources.LeftHand)
-            {
-                if (LeftName)
-                    LeftName.text = Nom;
-                if (LeftFunction)
-                    LeftFunction.text = Function;
-            }
+
         }
 
 
