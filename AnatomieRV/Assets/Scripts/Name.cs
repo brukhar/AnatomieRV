@@ -105,11 +105,10 @@ namespace Valve.VR.InteractionSystem.Sample
         // Called when this GameObject becomes attached to the hand
         //-------------------------------------------------
         private void OnAttachedToHand(Hand hand)
-        {
-
-            if(transform.parent != GameObject.Find("Muscles"))
+        { 
+            if(transform.parent == GameObject.Find("Muscles"))
             {
-                Debug.Log("j ai un parent");
+                
                 generalText.text = Nom;
                 if (hand.handType == SteamVR_Input_Sources.RightHand)
                 {
