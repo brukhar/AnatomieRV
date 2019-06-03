@@ -58,6 +58,8 @@ namespace Valve.VR.InteractionSystem
         [HideInInspector]
         public Interactable interactable;
 
+        public GrabTypes grabType = GrabTypes.Pinch;
+
 
         //-------------------------------------------------
         protected virtual void Awake()
@@ -123,7 +125,7 @@ namespace Valve.VR.InteractionSystem
         {
             GrabTypes startingGrabType = hand.GetGrabStarting();
             
-            if (startingGrabType != GrabTypes.None)
+            if (startingGrabType == grabType)
             {
 				hand.AttachObject( gameObject, startingGrabType, attachmentFlags, attachmentOffset );
                 hand.HideGrabHint();
