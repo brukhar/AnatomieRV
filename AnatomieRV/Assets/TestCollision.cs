@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class TestCollision : MonoBehaviour
 {
@@ -28,6 +29,7 @@ public class TestCollision : MonoBehaviour
         {
             Debug.Log("mauvaise reponse");
         }
+        GameObject.Find("NombreQuestion").GetComponent<Text>().text = ;
         Destroy(collision.gameObject);
         GameObject.Find("UI").GetComponent<QuizManagement>().GetRandomBones();
     }

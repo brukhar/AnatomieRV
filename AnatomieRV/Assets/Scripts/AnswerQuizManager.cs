@@ -34,7 +34,12 @@ public class AnswerQuizManager : MonoBehaviour
     {
         resetText();
         int positionreponse = Random.Range(0, 4);
-        ListOfReponse[positionreponse].GetComponent<TextMesh>().text = Answer;
+        string[] splitanswer = Answer.Split(null);
+        ListOfReponse[positionreponse].GetComponent<TextMesh>().text = splitanswer[0];
+        for(int y  = 1; y < splitanswer.Length; y++)
+        {
+            ListOfReponse[positionreponse].GetComponent<TextMesh>().text += "\n" + splitanswer[y];
+        }
         for(int i = 0; i < ListOfReponse.Count - 1; i++)
         {
             int number = Random.Range(0, ListOfBones.Count);
@@ -70,7 +75,12 @@ public class AnswerQuizManager : MonoBehaviour
         {
             if (r.GetComponent<TextMesh>().text.Length == 0)
             {
-                r.GetComponent<TextMesh>().text = reponse;
+                string[] splitanswer = reponse.Split(null);
+                r.GetComponent<TextMesh>().text = splitanswer[0];
+                for (int y = 1; y < splitanswer.Length; y++)
+                {
+                    r.GetComponent<TextMesh>().text += "\n" + splitanswer[y];
+                }
                 break;
             }
         }
