@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class QuizManagement : MonoBehaviour
 {
@@ -40,6 +41,15 @@ public class QuizManagement : MonoBehaviour
 
 
 
+    }
+
+    public void stopquiz()
+    {
+        GameObject.Find("NombreReponse").GetComponent<Text>().text = "0";
+        GameObject.Find("NombreQuestion").GetComponent<Text>().text = "0";
+        GameObject.Find("ReponseManager").GetComponent<AnswerQuizManager>().resetText();
+        GameObject.Find("Answer").GetComponent<TextMesh>().text = null;
+        Destroy(BonesTofind);
     }
 
     // Update is called once per frame

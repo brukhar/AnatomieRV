@@ -86,7 +86,7 @@ public class AnswerQuizManager : MonoBehaviour
         }
     }
 
-    void resetText()
+    public void resetText()
     {
         foreach (GameObject r in ListOfReponse)
         {
@@ -95,6 +95,7 @@ public class AnswerQuizManager : MonoBehaviour
            
         }
     }
+
         
     
     // Update is called once per frame
