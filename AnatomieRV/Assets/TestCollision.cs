@@ -21,8 +21,9 @@ public class TestCollision : MonoBehaviour
     {
        string nom = collision.gameObject.GetComponent<Valve.VR.InteractionSystem.Sample.Name>().Nom;
        string reponse = GetComponent<TextMesh>().text;
-
-        if(nom == reponse)
+        ;
+        Debug.Log(nom + "............" + reponse);
+        if(nom == GameObject.Find("UI").GetComponent<QuizManagement>().BonesTofind.GetComponent<Valve.VR.InteractionSystem.Sample.Name>().Nom)
         {
             int goodreponse = int.Parse(GameObject.Find("NombreReponse").GetComponent<Text>().text) + 1;
             GameObject.Find("NombreReponse").GetComponent<Text>().text = goodreponse.ToString();

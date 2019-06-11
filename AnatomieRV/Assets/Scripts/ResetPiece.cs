@@ -51,4 +51,11 @@ public class ResetPiece : MonoBehaviour
         transform.localRotation = rotOrigin;
         transform.localScale = scaleOrigin;
     }
+
+    public void ResetPosChangementMode()
+    {
+        transform.SetParent(parent);
+        transform.localPosition = posOrigin;
+        transform.localRotation = rotOrigin;
+    }
 }

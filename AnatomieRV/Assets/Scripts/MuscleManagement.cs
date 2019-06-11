@@ -10,21 +10,52 @@ namespace Valve.VR.InteractionSystem.Sample
     {
 
         private GameObject Model;
+        private bool OsActive = true;
+        private bool MuscleActive = false;
 
 
-        public void ShowOnlyBones()
+        public void ShowBones()
         {
+
+            if(OsActive == true)
+            {
+                OsActive = false;
+            }
+            else
+            {
+                OsActive = true;
+            }
             Model = GameObject.Find("Muscles");
 
             foreach (Transform child in Model.transform)
             {
-                if (child.ToString().Contains("Box"))
+                if(OsActive == true)
                 {
-                    
-                    child.gameObject.SetActive(true);
-                }
+                    if (child.ToString().Contains("Box"))
+                    {
 
-                if (child.ToString().Contains("Mus") || child.ToString().Contains("Oeil"))
+                        child.gameObject.SetActive(true);
+                       
+                    }
+                }
+                else
+                {
+                    if (child.ToString().Contains("Box"))
+                    {
+
+                        child.gameObject.SetActive(false);
+                        ResetPiece reset = child.gameObject.GetComponent<ResetPiece>();
+                        if (reset != null)
+                        {
+                            
+                            reset.ResetPosChangementMode();
+                        }
+                       
+                    }
+                }
+                
+
+               /* if (child.ToString().Contains("Mus") || child.ToString().Contains("Oeil"))
                 {
 
                     child.gameObject.SetActive(false);
@@ -33,17 +64,25 @@ namespace Valve.VR.InteractionSystem.Sample
                     {
                         reset.ResetPos();
                     }
-                }
+                }*/
 
             }
         }
 
-        public void ShowOnlyMuscle()
+        public void ShowMuscle()
         {
             Model = GameObject.Find("Muscles");
+            if (MuscleActive == true)
+            {
+                MuscleActive = false;
+            }
+            else
+            {
+                MuscleActive = true;
+            }
             foreach (Transform child in Model.transform)
             {
-                if (child.ToString().Contains("Box"))
+               /* if (child.ToString().Contains("Box"))
                 {
                     child.gameObject.SetActive(false);
                     ResetPiece reset = child.gameObject.GetComponent<ResetPiece>();
@@ -51,12 +90,28 @@ namespace Valve.VR.InteractionSystem.Sample
                     {
                         reset.ResetPos();
                     }
-                }
-
-                if (child.ToString().Contains("Mus") || child.ToString().Contains("Oeil"))
+                }*/
+                if(MuscleActive == true)
                 {
-                    child.gameObject.SetActive(true); ;
+                    if (child.ToString().Contains("Mus") || child.ToString().Contains("Oeil"))
+                    {
+                        child.gameObject.SetActive(true); ;
+                    }
                 }
+                else
+                {
+                    if (child.ToString().Contains("Mus") || child.ToString().Contains("Oeil"))
+                    {
+                        child.gameObject.SetActive(false);
+                        ResetPiece reset = child.gameObject.GetComponent<ResetPiece>();
+                        if (reset != null)
+                        {
+                            reset.ResetPosChangementMode();
+                        }
+                        
+                    }
+                }
+                
 
             }
         }
