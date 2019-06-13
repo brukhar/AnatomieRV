@@ -19,15 +19,22 @@ public class TestCollision : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-       string nom = collision.gameObject.GetComponent<Valve.VR.InteractionSystem.Sample.Name>().Nom;
-       string reponse = GetComponent<TextMesh>().text;
-        ;
-        Debug.Log(nom + "............" + reponse);
-        if(nom == GameObject.Find("UI").GetComponent<QuizManagement>().BonesTofind.GetComponent<Valve.VR.InteractionSystem.Sample.Name>().Nom)
+        string nom = collision.gameObject.GetComponent<Valve.VR.InteractionSystem.Sample.Name>().Nom;
+        string[] splitanswer = nom.Split(null);
+        nom = splitanswer[0];
+        for (int y = 1; y < splitanswer.Length; y++)
+        {
+            nom += "\n" + splitanswer[y];
+        }
+        string reponse = GetComponent<TextMesh>().text;
+        Debug.Log(nom + ".............." + reponse);
+        if (nom == reponse)
         {
             int goodreponse = int.Parse(GameObject.Find("NombreReponse").GetComponent<Text>().text) + 1;
             GameObject.Find("NombreReponse").GetComponent<Text>().text = goodreponse.ToString();
-            Debug.Log("bonne reponse");            
+            Debug.Log("bonne reponse");
+            
+
         }
         else
         {
@@ -36,7 +43,7 @@ public class TestCollision : MonoBehaviour
         int score = int.Parse(GameObject.Find("NombreQuestion").GetComponent<Text>().text) + 1;
         GameObject.Find("NombreQuestion").GetComponent<Text>().text = score.ToString()  ;
         Destroy(collision.gameObject);
-        GameObject.Find("UI").GetComponent<QuizManagement>().GetRandomBones();
-        GameObject.Find("Anwser").GetComponent<TextMesh>().text = "Reponse : " + reponse;
+        GameObject.Find("UI").GetComponent<QuizManagement>().GetRandom();
+        GameObject.Find("Anwser").GetComponent<TextMesh>().text = "Reponse : " + nom;
     }
 }

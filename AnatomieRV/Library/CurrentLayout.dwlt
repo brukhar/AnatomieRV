@@ -113,7 +113,7 @@ MonoBehaviour:
   m_MinSize: {x: 683, y: 344}
   m_MaxSize: {x: 12008, y: 8044}
   vertical: 1
-  controlID: 85
+  controlID: 69
 --- !u!114 &6
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -138,7 +138,7 @@ MonoBehaviour:
   m_MinSize: {x: 683, y: 344}
   m_MaxSize: {x: 12008, y: 8044}
   vertical: 0
-  controlID: 86
+  controlID: 70
 --- !u!114 &7
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -163,7 +163,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 344}
   m_MaxSize: {x: 8006, y: 8044}
   vertical: 1
-  controlID: 87
+  controlID: 71
 --- !u!114 &8
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -188,7 +188,7 @@ MonoBehaviour:
   m_MinSize: {x: 406, y: 222}
   m_MaxSize: {x: 8006, y: 4022}
   vertical: 0
-  controlID: 88
+  controlID: 72
 --- !u!114 &9
 MonoBehaviour:
   m_ObjectHideFlags: 52
@@ -477,10 +477,10 @@ MonoBehaviour:
   m_ViewDataDictionary: {fileID: 0}
   m_SceneHierarchy:
     m_TreeViewState:
-      scrollPos: {x: 0, y: 0}
-      m_SelectedIDs: 383c0000
-      m_LastClickedID: 15416
-      m_ExpandedIDs: 8efbfffff4fffffffc3a0000823b0000ea3b00000a3c00002e3c0000383c0000
+      scrollPos: {x: 0, y: 2040}
+      m_SelectedIDs: f0eaffff
+      m_LastClickedID: -5392
+      m_ExpandedIDs: 14aaffffd0aaffff8efbffff823b0000a63b00002a3c0000383c0000
       m_RenameOverlay:
         m_UserAcceptedRename: 0
         m_Name: 
@@ -540,9 +540,9 @@ MonoBehaviour:
   m_PlayAudio: 0
   m_AudioPlay: 0
   m_Position:
-    m_Target: {x: 5.767518, y: 0.90134877, z: 1.6284671}
+    m_Target: {x: 6.9533143, y: 0.9514782, z: 1.011707}
     speed: 2
-    m_Value: {x: 5.767518, y: 0.90134877, z: 1.6284671}
+    m_Value: {x: 6.9533143, y: 0.9514782, z: 1.011707}
   m_RenderMode: 0
   m_CameraMode:
     drawMode: 0
@@ -571,13 +571,13 @@ MonoBehaviour:
       speed: 2
       m_Value: 0
   m_Rotation:
-    m_Target: {x: -0.019376127, y: -0.74937767, z: 0.021728134, w: -0.6617791}
+    m_Target: {x: -0.055111244, y: -0.6980533, z: 0.05384501, w: -0.71215075}
     speed: 2
-    m_Value: {x: -0.019372582, y: -0.7492406, z: 0.021724159, w: -0.66165805}
+    m_Value: {x: -0.05510095, y: -0.69792295, z: 0.053834956, w: -0.7120178}
   m_Size:
-    m_Target: 5.5305104
+    m_Target: 4.4995766
     speed: 2
-    m_Value: 5.5305104
+    m_Value: 4.4995766
   m_Ortho:
     m_Target: 0
     speed: 2
@@ -640,19 +640,19 @@ MonoBehaviour:
     m_ShowAllHits: 0
     m_SearchArea: 1
     m_Folders:
-    - Assets/SteamVR/InteractionSystem/Core/Scripts
+    - Assets/Scripts
   m_ViewMode: 1
   m_StartGridSize: 65
   m_LastFolders:
-  - Assets/SteamVR/InteractionSystem/Core/Scripts
+  - Assets/Scripts
   m_LastFoldersGridSize: 65
   m_LastProjectPath: D:\VR-GroupeGuillaumeGuillaume\AnatomieRV\AnatomieRV
   m_LockTracker:
     m_IsLocked: 0
   m_FolderTreeState:
-    scrollPos: {x: 0, y: 28}
-    m_SelectedIDs: e0350000
-    m_LastClickedID: 13792
+    scrollPos: {x: 0, y: 80}
+    m_SelectedIDs: 94320000
+    m_LastClickedID: 12948
     m_ExpandedIDs: 00000000f42b00007c32000024330000d03400009e380000443900009a39000000ca9a3b
     m_RenameOverlay:
       m_UserAcceptedRename: 0
@@ -681,7 +681,7 @@ MonoBehaviour:
     scrollPos: {x: 0, y: 0}
     m_SelectedIDs: 
     m_LastClickedID: 0
-    m_ExpandedIDs: 00000000f42b00007c320000d03400009e380000443900009a390000
+    m_ExpandedIDs: 00000000f42b00007c32000024330000d03400009e380000443900009a390000
     m_RenameOverlay:
       m_UserAcceptedRename: 0
       m_Name: 
@@ -706,8 +706,8 @@ MonoBehaviour:
       m_Icon: {fileID: 0}
       m_ResourceFile: 
   m_ListAreaState:
-    m_SelectedInstanceIDs: 0a3c0000
-    m_LastClickedInstanceID: 15370
+    m_SelectedInstanceIDs: d0aaffff
+    m_LastClickedInstanceID: -21808
     m_HadKeyboardFocusLastEvent: 1
     m_ExpandedInstanceIDs: c6230000a22d00008cc9fcff0a04feff7cf0fdffae2ffeff622b000038300000984a0000f24500000eaefaff5636000080070000ee3bfeff16470000b42d00001ce1fdff5a7af1fff630000092340000bc4c00006012faff267bf6ff567ef2ff9ed4f6ff0a330000f02b00009a310000f82c0000e834000074bc0000ae3700009ecffcff1e4dfdfffa580000482d00009606000098060000e83f00009432000000000000
     m_RenameOverlay:

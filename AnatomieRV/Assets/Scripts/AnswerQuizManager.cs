@@ -12,18 +12,14 @@ public class AnswerQuizManager : MonoBehaviour
     private GameObject Model;
     private List<GameObject> ListOfReponse = new List<GameObject>();
     private List<GameObject> ListOfBones = new List<GameObject>();
+    private List<GameObject> ListOfMuscle = new List<GameObject>();
+    private QuizManagement qm;
     // Start is called before the first frame update
     void Start()
     {
 
         Model = GameObject.Find("Muscles");
-        foreach (Transform child in Model.transform)
-        {
-            if (child.ToString().Contains("Box"))
-            {
-                ListOfBones.Add(child.gameObject);
-            }
-        }
+        qm = GameObject.Find("UI").GetComponent<QuizManagement>();
         ListOfReponse.Add(Reponse1);
         ListOfReponse.Add(Reponse2);
         ListOfReponse.Add(Reponse3);
@@ -42,14 +38,28 @@ public class AnswerQuizManager : MonoBehaviour
         }
         for(int i = 0; i < ListOfReponse.Count - 1; i++)
         {
-            int number = Random.Range(0, ListOfBones.Count);
-            bool addreponse = VerifierNomReponse(ListOfBones[number].GetComponent<Valve.VR.InteractionSystem.Sample.Name>().Nom);
-            while (addreponse == true)
+            if (qm.OsPressed)
             {
-                number = Random.Range(0, ListOfBones.Count);
-                addreponse = VerifierNomReponse(ListOfBones[number].GetComponent<Valve.VR.InteractionSystem.Sample.Name>().Nom);
+                int number = Random.Range(0, qm.ListOfBones.Count);
+                bool addreponse = VerifierNomReponse(qm.ListOfBones[number].GetComponent<Valve.VR.InteractionSystem.Sample.Name>().Nom);
+                while (addreponse == true)
+                {
+                    number = Random.Range(0, qm.ListOfBones.Count);
+                    addreponse = VerifierNomReponse(qm.ListOfBones[number].GetComponent<Valve.VR.InteractionSystem.Sample.Name>().Nom);
+                }
+                AddReponseToGameObject(qm.ListOfBones[number].GetComponent<Valve.VR.InteractionSystem.Sample.Name>().Nom);
             }
-            AddReponseToGameObject(ListOfBones[number].GetComponent<Valve.VR.InteractionSystem.Sample.Name>().Nom);
+            else if(qm.MusclePressed)
+            {
+                int number = Random.Range(0, qm.ListOfMuscle.Count);
+                bool addreponse = VerifierNomReponse(qm.ListOfMuscle[number].GetComponent<Valve.VR.InteractionSystem.Sample.Name>().Nom);
+                while (addreponse == true)
+                {
+                    number = Random.Range(0, qm.ListOfMuscle.Count);
+                    addreponse = VerifierNomReponse(qm.ListOfMuscle[number].GetComponent<Valve.VR.InteractionSystem.Sample.Name>().Nom);
+                }
+                AddReponseToGameObject(qm.ListOfMuscle[number].GetComponent<Valve.VR.InteractionSystem.Sample.Name>().Nom);
+            }
         }
         
         
