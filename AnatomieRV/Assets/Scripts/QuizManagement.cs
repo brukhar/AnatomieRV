@@ -52,6 +52,8 @@ public class QuizManagement : MonoBehaviour
             Tofind.GetComponent<Rigidbody>().useGravity = true;
             Tofind.GetComponent<Rigidbody>().isKinematic = false;
             Tofind.GetComponent<Rigidbody>().freezeRotation = true;
+            Tofind.GetComponent<Valve.VR.InteractionSystem.Sample.Name>().isForquiz = true;
+            Destroy(Tofind.GetComponent<ResetPiece>());
             Tofind.transform.localScale = ListOfBones[number].transform.lossyScale;
             Tofind.SetActive(true);
             reponse.GetComponent<AnswerQuizManager>().creerReponse();
@@ -65,6 +67,8 @@ public class QuizManagement : MonoBehaviour
             Tofind.GetComponent<Rigidbody>().useGravity = true;
             Tofind.GetComponent<Rigidbody>().isKinematic = false;
             Tofind.GetComponent<Rigidbody>().freezeRotation = true;
+            Tofind.GetComponent<Valve.VR.InteractionSystem.Sample.Name>().isForquiz = true;
+            Destroy(Tofind.GetComponent<ResetPiece>());
             Tofind.transform.localScale = ListOfMuscle[number].transform.lossyScale;
             Tofind.SetActive(true);
             reponse.GetComponent<AnswerQuizManager>().creerReponse();

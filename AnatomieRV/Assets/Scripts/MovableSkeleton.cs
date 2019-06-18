@@ -16,9 +16,12 @@ public class MovableSkeleton : MonoBehaviour
     public float minDezoom = 0.05f;
     public float ZoomCoefficient = 0.1f;
 
+    private ResetPiece[] childs; 
+
     // Start is called before the first frame update
     void Start()
     {
+        childs = GetComponentsInChildren<ResetPiece>();
         ScaleOrigin = transform.localScale;
     }
 
@@ -75,6 +78,11 @@ public class MovableSkeleton : MonoBehaviour
                 }
 
                 AttachedHand.transform.localScale = coeffScale * new Vector3(1, 1, 1);
+
+                foreach(ResetPiece child in childs)
+                {
+                    child.Rescale(coeffScale * ScaleOrigin);
+                }
             }
         }
     }

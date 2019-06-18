@@ -33,6 +33,14 @@ public class ResetPiece : MonoBehaviour
         StartCoroutine(LerpPos());
     }
 
+    public void Rescale(Vector3 SkeletonSize)
+    {
+        if(transform.parent != parent)
+        {
+            transform.localScale = new Vector3(scaleOrigin.x * SkeletonSize.x, scaleOrigin.y * SkeletonSize.y, scaleOrigin.z * SkeletonSize.z);
+        }
+    }
+
     IEnumerator LerpPos()
     {
         transform.SetParent(parent);

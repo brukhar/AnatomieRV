@@ -17,10 +17,15 @@ namespace Valve.VR.InteractionSystem.Sample
         public string Nom;
         public string Function;
 
+        public bool isForquiz = false;
+
         public Text RightName;
         public Text RightFunction;
         public Text LeftName;
         public Text LeftFunction;
+        
+        public GameObject VRCamera;
+        public GameObject FallbackCamera;
 
         private TextMesh generalText;
         private TextMesh hoveringText;
@@ -38,10 +43,12 @@ namespace Valve.VR.InteractionSystem.Sample
         {
             var textMeshs = GetComponentsInChildren<TextMesh>();
             generalText = textMeshs[0];
-         
+
 
             generalText.text = "";
-        
+
+            generalText.transform.localScale = new Vector3(generalText.transform.localScale.x / transform.localScale.x, generalText.transform.localScale.y / transform.localScale.y, generalText.transform.localScale.z / transform.localScale.z);
+
 
             interactable = this.GetComponent<Interactable>();
         }
@@ -50,64 +57,64 @@ namespace Valve.VR.InteractionSystem.Sample
         //-------------------------------------------------
         // Called when a Hand starts hovering over this object
         //-------------------------------------------------
-      /*  private void OnHandHoverBegin(Hand hand)
-        {
-            generalText.text = "Hovering hand: " + hand.name;
-        }
+        /*  private void OnHandHoverBegin(Hand hand)
+          {
+              generalText.text = "Hovering hand: " + hand.name;
+          }
 
 
-        //-------------------------------------------------
-        // Called when a Hand stops hovering over this object
-        //-------------------------------------------------
-        private void OnHandHoverEnd(Hand hand)
-        {
-            generalText.text = "No Hand Hovering";
-        }
+          //-------------------------------------------------
+          // Called when a Hand stops hovering over this object
+          //-------------------------------------------------
+          private void OnHandHoverEnd(Hand hand)
+          {
+              generalText.text = "No Hand Hovering";
+          }
 
 
-        //-------------------------------------------------
-        // Called every Update() while a Hand is hovering over this object
-        //-------------------------------------------------
-        private void HandHoverUpdate(Hand hand)
-        {
-            GrabTypes startingGrabType = hand.GetGrabStarting();
-            bool isGrabEnding = hand.IsGrabEnding(this.gameObject);
+          //-------------------------------------------------
+          // Called every Update() while a Hand is hovering over this object
+          //-------------------------------------------------
+          private void HandHoverUpdate(Hand hand)
+          {
+              GrabTypes startingGrabType = hand.GetGrabStarting();
+              bool isGrabEnding = hand.IsGrabEnding(this.gameObject);
 
-            if (interactable.attachedToHand == null && startingGrabType != GrabTypes.None)
-            {
-                // Save our position/rotation so that we can restore it when we detach
-                oldPosition = transform.position;
-                oldRotation = transform.rotation;
+              if (interactable.attachedToHand == null && startingGrabType != GrabTypes.None)
+              {
+                  // Save our position/rotation so that we can restore it when we detach
+                  oldPosition = transform.position;
+                  oldRotation = transform.rotation;
 
-                // Call this to continue receiving HandHoverUpdate messages,
-                // and prevent the hand from hovering over anything else
-                hand.HoverLock(interactable);
+                  // Call this to continue receiving HandHoverUpdate messages,
+                  // and prevent the hand from hovering over anything else
+                  hand.HoverLock(interactable);
 
-                // Attach this object to the hand
-                hand.AttachObject(gameObject, startingGrabType, attachmentFlags);
-            }
-            else if (isGrabEnding)
-            {
-                // Detach this object from the hand
-                hand.DetachObject(gameObject);
+                  // Attach this object to the hand
+                  hand.AttachObject(gameObject, startingGrabType, attachmentFlags);
+              }
+              else if (isGrabEnding)
+              {
+                  // Detach this object from the hand
+                  hand.DetachObject(gameObject);
 
-                // Call this to undo HoverLock
-                hand.HoverUnlock(interactable);
+                  // Call this to undo HoverLock
+                  hand.HoverUnlock(interactable);
 
-                // Restore position/rotation
-                transform.position = oldPosition;
-                transform.rotation = oldRotation;
-            }
-        }*/
+                  // Restore position/rotation
+                  transform.position = oldPosition;
+                  transform.rotation = oldRotation;
+              }
+          }*/
 
 
         //-------------------------------------------------
         // Called when this GameObject becomes attached to the hand
         //-------------------------------------------------
         private void OnAttachedToHand(Hand hand)
-        { 
-            
-                
+        {
+            if (!isForquiz)
+            {
                 generalText.text = Nom;
                 if (hand.handType == SteamVR_Input_Sources.RightHand)
                 {
@@ -123,7 +130,7 @@ namespace Valve.VR.InteractionSystem.Sample
                     if (LeftFunction)
                         LeftFunction.text = Function;
                 }
-            
+            }
 
         }
 
@@ -134,20 +141,23 @@ namespace Valve.VR.InteractionSystem.Sample
         //-------------------------------------------------
         private void OnDetachedFromHand(Hand hand)
         {
-            generalText.text = string.Format("");
-            if (hand.handType == SteamVR_Input_Sources.RightHand)
+            if (!isForquiz)
             {
-                if (RightName)
-                    RightName.text = string.Format("");
-                if (RightFunction)
-                    RightFunction.text = string.Format("");
-            }
-            else if (hand.handType == SteamVR_Input_Sources.LeftHand)
-            {
-                if (LeftName)
-                    LeftName.text = string.Format("");
-                if (LeftFunction)
-                    LeftFunction.text = string.Format("");
+                generalText.text = string.Format("");
+                if (hand.handType == SteamVR_Input_Sources.RightHand)
+                {
+                    if (RightName)
+                        RightName.text = string.Format("");
+                    if (RightFunction)
+                        RightFunction.text = string.Format("");
+                }
+                else if (hand.handType == SteamVR_Input_Sources.LeftHand)
+                {
+                    if (LeftName)
+                        LeftName.text = string.Format("");
+                    if (LeftFunction)
+                        LeftFunction.text = string.Format("");
+                }
             }
         }
 
@@ -157,10 +167,13 @@ namespace Valve.VR.InteractionSystem.Sample
         //-------------------------------------------------
         private void HandAttachedUpdate(Hand hand)
         {
-           
+            if (VRCamera.activeInHierarchy)
+                generalText.transform.rotation = Quaternion.LookRotation(generalText.transform.position - VRCamera.transform.position);
+            else
+                generalText.transform.rotation = Quaternion.LookRotation(generalText.transform.position - FallbackCamera.transform.position);
         }
 
-      
+
 
         //-------------------------------------------------
         // Called when this attached GameObject becomes the primary attached object
